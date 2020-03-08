@@ -1,0 +1,23 @@
+<p-menubar [model]="menuItems"></p-menubar>
+
+<div class="p-grid">
+  <div class="p-col-4">
+    <p-accordion (onOpen)="onTabOpen($event)" (onClose)="onTabClosed()">
+      <p-accordionTab *ngFor="let n of notes">
+        <p-header>
+          <input type="text" pInputText [(ngModel)]="n.title"/>
+      </p-header>
+      <div>
+        <b>Created: </b> {{ n.timestamp }}
+      </div>
+      <div>
+        <b>Modified: </b> {{ n.modified }}
+      </div>
+     </p-accordionTab>
+    </p-accordion>
+  </div>
+
+  <div class="p-col-8">
+    <textarea *ngIf="selectedNote" class="notes-text-area" pInputTextarea [(ngModel)]="selectedNote.note"></textarea>
+  </div>
+</div>
